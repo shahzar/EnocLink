@@ -22,7 +22,7 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     override fun injectDependency() = getDiComponent().inject(this)
 
     override fun initViews() {
-        setTitle("Login")
+        setTitle(getString(R.string.page_title_login))
         btnLogin.setOnClickListener {
             onLogin()
         }
@@ -46,12 +46,12 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     private fun validate(): Boolean {
         if (etUsername.text.isNullOrEmpty()) {
-            etUsername.error = "Please enter a username"
+            etUsername.error = getString(R.string.err_enter_username)
             return false
         }
 
         if (etPassword.text.isNullOrEmpty()) {
-            etPassword.error = "Please enter a password"
+            etPassword.error = getString(R.string.err_enter_password)
             return false
         }
 

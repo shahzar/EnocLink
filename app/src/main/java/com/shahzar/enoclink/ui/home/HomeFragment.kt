@@ -26,7 +26,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
 
     override fun initViews() {
-        setTitle("User Profile")
+        setTitle(getString(R.string.page_title_profile))
         viewModel.getUserDetails()
 
         layoutProfileImage.setOnClickListener {

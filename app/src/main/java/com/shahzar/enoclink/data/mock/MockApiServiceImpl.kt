@@ -8,7 +8,6 @@ import com.shahzar.enoclink.data.model.response.AvatarResponse
 import com.shahzar.enoclink.data.model.response.LoginResponse
 import com.shahzar.enoclink.data.model.response.UserResponse
 import com.shahzar.enoclink.data.remote.ApiService
-import retrofit2.http.Body
 
 class MockApiServiceImpl: ApiService {
 
@@ -16,7 +15,7 @@ class MockApiServiceImpl: ApiService {
         return SampleDataModel(true, 0, "Title", 0)
     }
 
-    override suspend fun login(@Body loginRequest: LoginRequest): LoginResponse {
+    override suspend fun login(loginRequest: LoginRequest): LoginResponse {
         return LoginResponse("29837EHD789OK23HU8I", "12345")
     }
 

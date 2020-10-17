@@ -27,9 +27,6 @@ class LoginViewModel @Inject constructor (
              },
              onSuccess = {
                  if (it.token.isNotEmpty()) {
-                     prefs.setAccessToken(it.token)
-                     prefs.setUserId(it.token)
-                     prefs.setUserEmail(username)
                      _onLoginSuccess.value = Event(true)
                  }
              }

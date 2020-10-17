@@ -30,9 +30,9 @@ class MainActivity : BaseActivity() {
 
         viewModel.isUserLoggedIn.observe(this, Observer { loggedIn ->
             if (loggedIn) {
-                navMgr.pushFragment(this, HomeFragment.newInstance())
+                navMgr.pushFragment(this, HomeFragment.newInstance(), false)
             } else {
-                navMgr.pushFragment(this, LoginFragment.newInstance())
+                navMgr.pushFragment(this, LoginFragment.newInstance(), false)
             }
         })
     }

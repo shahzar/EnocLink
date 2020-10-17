@@ -3,12 +3,14 @@ package com.shahzar.enoclink.di.modules
 import com.google.gson.GsonBuilder
 import com.shahzar.enoclink.data.mock.MockApiServiceImpl
 import com.shahzar.enoclink.data.remote.ApiService
+import com.shahzar.enoclink.util.interceptor.SessionInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 class NetworkModule {
@@ -34,12 +36,18 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideOkHttp(): OkHttpClient {
+    fun provideOkHttp(interceptor: SessionInterceptor): OkHttpClient {
 
         val okHttpBuilder = OkHttpClient.Builder()
+        okHttpBuilder.addInterceptor(interceptor)
         return okHttpBuilder.build()
     }
 
+    @Singleton
+    @Provides
+    fun provideInterceptor(): SessionInterceptor {
+        return SessionInterceptor()
+    }
 
     @Provides
     fun provideGson(): GsonConverterFactory = GsonConverterFactory.create(GsonBuilder().create())
