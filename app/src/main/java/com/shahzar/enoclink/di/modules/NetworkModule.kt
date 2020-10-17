@@ -1,12 +1,14 @@
 package com.shahzar.enoclink.di.modules
 
 import com.google.gson.GsonBuilder
-import com.shahzar.enoclink.data.repository.ApiService
+import com.shahzar.enoclink.data.mock.MockApiServiceImpl
+import com.shahzar.enoclink.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 
 @Module
 class NetworkModule {
@@ -23,6 +25,12 @@ class NetworkModule {
             .client(okHttpClient)
             .build().create(ApiService::class.java)
 
+    }
+
+    @Provides
+    @Named("MockApi")
+    fun provideMockApiService(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory): ApiService {
+        return MockApiServiceImpl()
     }
 
     @Provides

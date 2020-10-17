@@ -2,11 +2,14 @@ package com.shahzar.enoclink.ui.home
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.shahzar.enoclink.R
+import com.shahzar.enoclink.data.model.response.UserResponse
 import com.shahzar.enoclink.ui.base.BaseFragment
 import com.shahzar.enoclink.util.Constants
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -23,7 +26,8 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
 
     override fun initViews() {
-        viewModel.getSampleData()
+        setTitle("User Profile")
+        viewModel.getUserDetails()
 
         layoutProfileImage.setOnClickListener {
             promptImagePick()
@@ -32,6 +36,10 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
     override fun setupObservers() {
         super.setupObservers()
+
+        viewModel.user.observe(viewLifecycleOwner, Observer {
+            displayUserDetails(it)
+        })
 
         viewModel.profileImageUri.observe(viewLifecycleOwner, Observer {
             displayProfileImage(it)
@@ -45,9 +53,18 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             .start()
     }
 
-    private fun displayProfileImage(uri: Uri) {
+    private fun displayUserDetails(user: UserResponse) {
+        tvEmail.text = user.email
+        if (user.avatarUrl.isNotEmpty()) {
+            displayProfileImage(url = user.avatarUrl)
+        }
+    }
+
+    private fun displayProfileImage(uri: Uri? = null,
+                                    url: String? = null,
+                                    drawable: Drawable? = ContextCompat.getDrawable(rootView.context, R.drawable.ic_blank_avatar)) {
         Glide.with(rootView)
-            .load(uri)
+            .load(url?: uri?: drawable)
             .circleCrop()
             .into(imgProfile)
     }

@@ -4,10 +4,8 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shahzar.enoclink.MainActivity
-import com.shahzar.enoclink.NavMgr
 import com.shahzar.enoclink.R
 import com.shahzar.enoclink.ui.base.BaseActivity
-import javax.inject.Inject
 
 class SplashActivity: BaseActivity() {
 
@@ -19,7 +17,6 @@ class SplashActivity: BaseActivity() {
 
     override fun initViews() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
-
         viewModel.checkLoginStatus()
     }
 
@@ -28,6 +25,7 @@ class SplashActivity: BaseActivity() {
 
         viewModel.isUserLoggedIn.observe(this, Observer {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         })
     }
 

@@ -61,6 +61,10 @@ abstract class BaseFragment<VM : BaseViewModel>: Fragment() {
         return (activity as BaseActivity).getDiComponent()
     }
 
+    fun setTitle(title: String?) {
+        (activity as BaseActivity).setToolbarTitle(title)
+    }
+
     fun showError(msg: String) {
         Snackbar.make(rootView, msg, Snackbar.LENGTH_LONG).show()
     }

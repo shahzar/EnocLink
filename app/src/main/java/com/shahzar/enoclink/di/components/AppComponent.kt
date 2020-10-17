@@ -9,7 +9,9 @@ import com.shahzar.enoclink.ui.home.HomeFragment
 import com.shahzar.enoclink.ui.login.LoginFragment
 import com.shahzar.enoclink.ui.splash.SplashActivity
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [AppModule::class, NetworkModule::class, ViewModelBuilder::class])
 interface AppComponent {
 

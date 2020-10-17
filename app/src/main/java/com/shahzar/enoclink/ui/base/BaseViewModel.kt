@@ -29,6 +29,10 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
         }
     }
 
+    fun showError(msg: String) {
+        _onError.value = msg
+    }
+
     override fun onCleared() {
         super.onCleared()
         job.cancel()

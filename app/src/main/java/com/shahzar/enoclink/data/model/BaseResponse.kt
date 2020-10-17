@@ -1,3 +1,3 @@
 package com.shahzar.enoclink.data.model
 
-open class BaseModel
+open class BaseResponse

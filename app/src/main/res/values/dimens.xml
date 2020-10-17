@@ -2,5 +2,6 @@
 <resources>
 
     <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_large">10dp</dimen>
 
 </resources>

@@ -1,19 +1,10 @@
 package com.shahzar.enoclink.ui.login
 
-import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.shahzar.enoclink.NavMgr
 import com.shahzar.enoclink.R
-import com.shahzar.enoclink.di.ViewModelFactory
 import com.shahzar.enoclink.ui.base.BaseFragment
 import com.shahzar.enoclink.ui.home.HomeFragment
-import com.shahzar.enoclink.util.livedata.Status
-import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
 
@@ -31,8 +22,9 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     override fun injectDependency() = getDiComponent().inject(this)
 
     override fun initViews() {
+        setTitle("Login")
         btnLogin.setOnClickListener {
-            viewModel.login()
+            onLogin()
         }
     }
 
@@ -44,6 +36,26 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
                 navMgr.pushFragment(activity, HomeFragment.newInstance())
             }
         })
+    }
+
+    private fun onLogin() {
+        if (validate()) {
+            viewModel.login(etUsername.text.toString(), etPassword.text.toString())
+        }
+    }
+
+    private fun validate(): Boolean {
+        if (etUsername.text.isNullOrEmpty()) {
+            etUsername.error = "Please enter a username"
+            return false
+        }
+
+        if (etPassword.text.isNullOrEmpty()) {
+            etPassword.error = "Please enter a password"
+            return false
+        }
+
+        return true
     }
 
 }

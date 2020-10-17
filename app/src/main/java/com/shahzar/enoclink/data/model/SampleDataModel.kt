@@ -1,6 +1,5 @@
 package com.shahzar.enoclink.data.model
 import com.google.gson.annotations.SerializedName
-import com.shahzar.enoclink.data.model.BaseModel
 
 
 data class SampleDataModel(
@@ -12,7 +11,7 @@ data class SampleDataModel(
     var title: String = "",
     @SerializedName("userId")
     var userId: Int = 0
-): BaseModel() {
+): BaseResponse() {
 
     override fun toString(): String {
         return super.toString()
