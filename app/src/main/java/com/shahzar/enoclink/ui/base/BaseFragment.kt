@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.RequestManager
 import com.google.android.material.snackbar.Snackbar
 import com.shahzar.enoclink.R
 import com.shahzar.enoclink.di.ViewModelFactory
@@ -23,6 +24,10 @@ abstract class BaseFragment<VM : BaseViewModel>: Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var glideRequestManager: RequestManager
+
 
     abstract fun getLayoutRes(): Int
     abstract fun getViewModelClass(): Class<VM>
@@ -67,6 +72,10 @@ abstract class BaseFragment<VM : BaseViewModel>: Fragment() {
 
     fun showError(msg: String) {
         Snackbar.make(rootView, msg, Snackbar.LENGTH_LONG).show()
+    }
+
+    fun getImageLoader(): RequestManager {
+        return glideRequestManager
     }
 
 }

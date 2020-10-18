@@ -1,5 +1,10 @@
 package com.shahzar.enoclink.di.modules
 
+import android.content.Context
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.GsonBuilder
 import com.shahzar.enoclink.data.mock.MockApiServiceImpl
 import com.shahzar.enoclink.data.remote.ApiService
@@ -51,5 +56,17 @@ class NetworkModule {
 
     @Provides
     fun provideGson(): GsonConverterFactory = GsonConverterFactory.create(GsonBuilder().create())
+
+    @Provides
+    fun provideGlideRequestManager(context: Context, requestOptions: RequestOptions): RequestManager {
+        return Glide.with(context)
+            .setDefaultRequestOptions(requestOptions)
+    }
+
+    @Provides
+    fun providesGlideRequestOptions(): RequestOptions {
+        return RequestOptions()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+    }
 
 }

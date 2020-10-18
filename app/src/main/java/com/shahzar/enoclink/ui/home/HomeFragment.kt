@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.shahzar.enoclink.R
 import com.shahzar.enoclink.data.model.response.UserResponse
@@ -63,8 +63,9 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
     private fun displayProfileImage(uri: Uri? = null,
                                     url: String? = null,
                                     drawable: Drawable? = ContextCompat.getDrawable(rootView.context, R.drawable.ic_blank_avatar)) {
-        Glide.with(rootView)
+        getImageLoader()
             .load(url?: uri?: drawable)
+            .transition(DrawableTransitionOptions.withCrossFade(200))
             .circleCrop()
             .into(imgProfile)
     }

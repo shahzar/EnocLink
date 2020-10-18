@@ -19,6 +19,11 @@ class AppModule(val application: Application) {
     }
 
     @Provides
+    fun getContext(): Context {
+        return application
+    }
+
+    @Provides
     fun getNavMgr(): NavMgr {
         return NavMgr()
     }
