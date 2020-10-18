@@ -12,7 +12,7 @@ class UserRepository @Inject constructor(
     @Named("MockApi") val remoteDataSrc: ApiService,
     private val prefs: UserPreferences,
     private val sessionInterceptor: SessionInterceptor
-): BaseDataManager() {
+): BaseRepository() {
 
     suspend fun getSampleData() = safeApiCall {
         remoteDataSrc.getSampleData()

@@ -5,7 +5,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-open class BaseDataManager {
+open class BaseRepository {
 
     suspend fun <T> safeApiCall(apiCall: suspend () -> T) = withContext(Dispatchers.IO) {
         try {

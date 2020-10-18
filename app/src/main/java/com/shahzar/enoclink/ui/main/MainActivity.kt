@@ -1,8 +1,9 @@
-package com.shahzar.enoclink
+package com.shahzar.enoclink.ui.main
 
-import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.shahzar.enoclink.NavMgr
+import com.shahzar.enoclink.R
 import com.shahzar.enoclink.ui.base.BaseActivity
 import com.shahzar.enoclink.ui.home.HomeFragment
 import com.shahzar.enoclink.ui.login.LoginFragment

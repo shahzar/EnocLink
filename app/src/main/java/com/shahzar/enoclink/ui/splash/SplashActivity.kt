@@ -3,7 +3,7 @@ package com.shahzar.enoclink.ui.splash
 import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.shahzar.enoclink.MainActivity
+import com.shahzar.enoclink.ui.main.MainActivity
 import com.shahzar.enoclink.R
 import com.shahzar.enoclink.ui.base.BaseActivity
 

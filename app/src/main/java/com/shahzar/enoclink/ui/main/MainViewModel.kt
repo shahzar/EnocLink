@@ -1,4 +1,4 @@
-package com.shahzar.enoclink
+package com.shahzar.enoclink.ui.main
 
 import com.shahzar.enoclink.ui.base.BaseViewModel
 

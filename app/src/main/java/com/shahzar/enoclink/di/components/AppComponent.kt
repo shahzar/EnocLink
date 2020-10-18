@@ -1,7 +1,7 @@
 package com.shahzar.enoclink.di.components
 
 import android.app.Application
-import com.shahzar.enoclink.MainActivity
+import com.shahzar.enoclink.ui.main.MainActivity
 import com.shahzar.enoclink.di.ViewModelBuilder
 import com.shahzar.enoclink.di.modules.AppModule
 import com.shahzar.enoclink.di.modules.NetworkModule
