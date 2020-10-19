@@ -9,14 +9,11 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class UserRepository @Inject constructor(
-    @Named("MockApi") val remoteDataSrc: ApiService,
+    @Named("MockApi")
+    private val remoteDataSrc: ApiService,
     private val prefs: UserPreferences,
     private val sessionInterceptor: SessionInterceptor
 ): BaseRepository() {
-
-    suspend fun getSampleData() = safeApiCall {
-        remoteDataSrc.getSampleData()
-    }
 
     suspend fun userLogin(username: String, password: String) = safeApiCall {
         val response = remoteDataSrc.login(LoginRequest(username, password))
@@ -25,12 +22,16 @@ class UserRepository @Inject constructor(
             prefs.setAccessToken(response.token)
             prefs.setUserId(response.token)
             prefs.setUserEmail(username)
+            // Not recommended way to store locally, check readme
+            prefs.setUserPassword(password)
         }
         return@safeApiCall response
     }
 
     suspend fun getUserDetails(userId: String) = safeApiCall {
-        remoteDataSrc.getUserDetails(userId)
+        val response = remoteDataSrc.getUserDetails(userId)
+        response.password = prefs.getUserPassword()?:""
+        return@safeApiCall response
     }
 
     suspend fun uploadAvatar(userId: String, avatarRequest: AvatarRequest) = safeApiCall {

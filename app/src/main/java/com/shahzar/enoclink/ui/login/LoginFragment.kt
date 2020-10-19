@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer
 import com.shahzar.enoclink.NavMgr
 import com.shahzar.enoclink.R
 import com.shahzar.enoclink.ui.base.BaseFragment
-import com.shahzar.enoclink.ui.home.HomeFragment
+import com.shahzar.enoclink.ui.home.ProfileFragment
 import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
 
@@ -33,7 +33,7 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
         viewModel.onLoginSuccess.observe(viewLifecycleOwner, Observer {
             it.getIfNotHandled()?.run {
-                navMgr.pushFragment(activity, HomeFragment.newInstance())
+                navMgr.pushFragment(activity, ProfileFragment.newInstance())
             }
         })
     }

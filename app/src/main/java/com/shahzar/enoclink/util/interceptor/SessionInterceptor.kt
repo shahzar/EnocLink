@@ -22,7 +22,7 @@ class SessionInterceptor @Inject constructor() : Interceptor {
         if (request.header("Cookie") == null) {
             // needs credentials
             if (sessionToken == null) {
-                throw RuntimeException("Session token should be defined for auth apis")
+                // throw RuntimeException("Session token should be defined for auth apis")
             } else {
                 requestBuilder.addHeader("Cookie", sessionToken)
             }

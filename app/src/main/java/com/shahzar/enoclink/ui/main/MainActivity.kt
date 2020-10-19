@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.shahzar.enoclink.NavMgr
 import com.shahzar.enoclink.R
 import com.shahzar.enoclink.ui.base.BaseActivity
-import com.shahzar.enoclink.ui.home.HomeFragment
+import com.shahzar.enoclink.ui.home.ProfileFragment
 import com.shahzar.enoclink.ui.login.LoginFragment
 import com.shahzar.enoclink.ui.splash.SplashViewModel
 import javax.inject.Inject
@@ -31,7 +31,7 @@ class MainActivity : BaseActivity() {
 
         viewModel.isUserLoggedIn.observe(this, Observer { loggedIn ->
             if (loggedIn) {
-                navMgr.pushFragment(this, HomeFragment.newInstance(), false)
+                navMgr.pushFragment(this, ProfileFragment.newInstance(), false)
             } else {
                 navMgr.pushFragment(this, LoginFragment.newInstance(), false)
             }

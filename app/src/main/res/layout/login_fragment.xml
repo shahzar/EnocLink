@@ -19,7 +19,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
@@ -32,12 +33,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundColor="@android:color/transparent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="textPassword"
                 android:hint="@string/hint_password" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,14 +51,14 @@
 
     <Button
         android:id="@+id/btnLogin"
-        style="@style/TextAppearance.AppCompat.Button"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/label_login"
         android:layout_marginTop="@dimen/margin_large"
         app:layout_constraintTop_toBottomOf="@+id/layoutFields"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@id/layoutFields"
+        app:layout_constraintEnd_toEndOf="@id/layoutFields"
         />
 
     <androidx.constraintlayout.widget.Guideline

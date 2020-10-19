@@ -15,14 +15,14 @@ import com.shahzar.enoclink.util.Constants
 import com.shahzar.enoclink.util.encrypt.EncryptUtil
 import kotlinx.android.synthetic.main.home_fragment.*
 
-class HomeFragment : BaseFragment<HomeViewModel>() {
+class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = ProfileFragment()
     }
 
     override fun getLayoutRes() = R.layout.home_fragment
-    override fun getViewModelClass() = HomeViewModel::class.java
+    override fun getViewModelClass() = ProfileViewModel::class.java
     override fun injectDependency() = getDiComponent().inject(this)
 
 
@@ -45,6 +45,11 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         viewModel.profileImageUri.observe(viewLifecycleOwner, Observer {
             displayProfileImage(it)
         })
+
+        viewModel.profileImageUrl.observe(viewLifecycleOwner, Observer {
+            displayProfileImage(url = it)
+        })
+
     }
 
     private fun promptImagePick() {
@@ -55,8 +60,8 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
     }
 
     private fun displayUserDetails(user: UserResponse) {
-        tvEmail.text = user.email
-        tvPassword.text = EncryptUtil.aesDecrypt(user.password)
+        etUsername.setText(user.email)
+        etPassword.setText(EncryptUtil.aesDecrypt(user.password))
         if (user.avatarUrl.isNotEmpty()) {
             displayProfileImage(url = user.avatarUrl)
         }

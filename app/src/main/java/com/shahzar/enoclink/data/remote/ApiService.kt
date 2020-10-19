@@ -1,7 +1,5 @@
 package com.shahzar.enoclink.data.remote
 
-import com.shahzar.enoclink.data.model.BaseResponse
-import com.shahzar.enoclink.data.model.SampleDataModel
 import com.shahzar.enoclink.data.model.request.AvatarRequest
 import com.shahzar.enoclink.data.model.request.LoginRequest
 import com.shahzar.enoclink.data.model.response.AvatarResponse
@@ -13,9 +11,6 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
-
-    @GET("todos/1")
-    suspend fun getSampleData(): SampleDataModel
 
     @POST("sessions/new")
     suspend fun login(@Body loginRequest: LoginRequest): LoginResponse

@@ -2,7 +2,7 @@ package com.shahzar.enoclink.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.shahzar.enoclink.ui.home.HomeViewModel
+import com.shahzar.enoclink.ui.home.ProfileViewModel
 import com.shahzar.enoclink.ui.login.LoginViewModel
 import com.shahzar.enoclink.ui.splash.SplashViewModel
 import dagger.Binds
@@ -33,8 +33,8 @@ internal abstract class ViewModelBuilder {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    internal abstract fun homeViewModel(homeViewModel: HomeViewModel) : ViewModel
+    @ViewModelKey(ProfileViewModel::class)
+    internal abstract fun homeViewModel(profileViewModel: ProfileViewModel) : ViewModel
 
     @Binds
     @IntoMap
