@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.shahzar.enoclink.data.UserRepository
 import com.shahzar.enoclink.data.local.UserPreferences
-import com.shahzar.enoclink.data.model.SampleDataModel
 import com.shahzar.enoclink.ui.base.BaseViewModel
-import com.shahzar.enoclink.util.hash.HashUtils
+import com.shahzar.enoclink.util.Constants
+import com.shahzar.enoclink.util.encrypt.EncryptUtil
 import com.shahzar.enoclink.util.livedata.Event
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ class LoginViewModel @Inject constructor (
 
          ioLaunch(
              block = {
-                 userRepository.userLogin(username, HashUtils.md5(password))
+                 userRepository.userLogin(username, EncryptUtil.aesEncrypt(password))
              },
              onSuccess = {
                  if (it.token.isNotEmpty()) {

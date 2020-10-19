@@ -75,11 +75,12 @@
                 android:text="Password: " />
 
             <TextView
+                android:id="@+id/tvPassword"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                tools:text="Email: " />
+                tools:text="Password: " />
 
         </LinearLayout>
 

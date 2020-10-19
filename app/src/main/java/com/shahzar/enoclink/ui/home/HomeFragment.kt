@@ -12,6 +12,7 @@ import com.shahzar.enoclink.R
 import com.shahzar.enoclink.data.model.response.UserResponse
 import com.shahzar.enoclink.ui.base.BaseFragment
 import com.shahzar.enoclink.util.Constants
+import com.shahzar.enoclink.util.encrypt.EncryptUtil
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : BaseFragment<HomeViewModel>() {
@@ -55,6 +56,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
     private fun displayUserDetails(user: UserResponse) {
         tvEmail.text = user.email
+        tvPassword.text = EncryptUtil.aesDecrypt(user.password)
         if (user.avatarUrl.isNotEmpty()) {
             displayProfileImage(url = user.avatarUrl)
         }

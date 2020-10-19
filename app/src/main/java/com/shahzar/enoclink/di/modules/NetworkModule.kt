@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    private val BASE_URL = ""
 
 
     @Provides

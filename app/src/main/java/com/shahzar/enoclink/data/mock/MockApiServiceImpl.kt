@@ -16,11 +16,12 @@ class MockApiServiceImpl: ApiService {
     }
 
     override suspend fun login(loginRequest: LoginRequest): LoginResponse {
+        Log.d("MockApiServiceImpl", "Password: ${loginRequest.password}")
         return LoginResponse("29837EHD789OK23HU8I", "12345")
     }
 
     override suspend fun getUserDetails(userId: String): UserResponse {
-        return UserResponse("shahzar@outlook.com", "https://images.pexels.com/photos/5571038/pexels-photo-5571038.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
+        return UserResponse("shahzar@outlook.com", "X/235K/A5ZF8K7ID7Camlg==","https://images.pexels.com/photos/5571038/pexels-photo-5571038.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
     }
 
     override suspend fun uploadUserAvatar(userId: String, avatarRequest: AvatarRequest): AvatarResponse {
