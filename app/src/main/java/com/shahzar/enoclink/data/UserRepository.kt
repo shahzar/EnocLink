@@ -20,7 +20,7 @@ class UserRepository @Inject constructor(
         if (response.token.isNotEmpty()) {
             sessionInterceptor.setSessionToken(response.token)
             prefs.setAccessToken(response.token)
-            prefs.setUserId(response.token)
+            prefs.setUserId(response.userid)
             prefs.setUserEmail(username)
             // Not recommended way to store locally, check readme
             prefs.setUserPassword(password)

@@ -13,7 +13,7 @@ import kotlinx.coroutines.delay
 class MockApiServiceImpl(val prefs: UserPreferences): ApiService {
 
     override suspend fun login(loginRequest: LoginRequest): LoginResponse {
-        Log.d("MockApiServiceImpl", "Password: ${loginRequest.password}")
+        //Log.d("MockApiServiceImpl", "Password: ${loginRequest.password}")
         return LoginResponse("29837EHD789OK23HU8I", "12345")
     }
 
@@ -22,8 +22,8 @@ class MockApiServiceImpl(val prefs: UserPreferences): ApiService {
     }
 
     override suspend fun uploadUserAvatar(userId: String, avatarRequest: AvatarRequest): AvatarResponse {
-        Log.d("MockApiServiceImpl", "uploadUserAvatar : " + avatarRequest.avatarBase64)
-        delay(2000)
-        return AvatarResponse("https://images.pexels.com/photos/5571038/pexels-photo-5571038.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
+        //Log.d("MockApiServiceImpl", "uploadUserAvatar : " + avatarRequest.avatarBase64)
+        delay(1000)
+        return AvatarResponse("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
     }
 }

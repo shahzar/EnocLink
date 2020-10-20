@@ -60,7 +60,8 @@ class ProfileViewModel @Inject constructor (
             onSuccess = {
                 user.avatarUrl = it
                 _user.value = user
-            }
+            },
+            onFailure = {}
         )
 
     }
