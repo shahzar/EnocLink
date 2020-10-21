@@ -50,6 +50,7 @@ dependencies {
     // Network
     implementation 'com.squareup.retrofit2:retrofit:2.7.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // DI
     implementation 'com.google.dagger:dagger:2.28'

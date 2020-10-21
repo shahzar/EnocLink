@@ -85,4 +85,10 @@ class ProfileViewModel @Inject constructor (
         )
     }
 
+    fun logoutUser() {
+        prefs.removeAccessToken()
+        prefs.removeUserEmail()
+        prefs.removeUserId()
+    }
+
 }

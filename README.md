@@ -26,4 +26,8 @@ API?
 5. What testing did you do, and why?
 
     Uses JUnit for Unit testing, to ensure proper functioning of the tested blocks.
+    Use following command to run all tests
+    ```
+    ./gradlew test
+    ```
 

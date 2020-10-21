@@ -11,6 +11,7 @@ open class BaseRepository {
         try {
             apiCall.invoke()
         } catch (throwable: Throwable) {
+            throwable.printStackTrace()
             when(throwable) {
                 is IOException -> throw IOException("Network Error. Please check your internet.")
                 is HttpException -> throw Exception("Error: ${throwable.message()}")

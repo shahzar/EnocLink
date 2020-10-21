@@ -21,6 +21,7 @@ class SplashViewModel @Inject constructor (
          ioLaunch({
              prefs.getAccessToken()
          }, {
+             it?.let { token -> userRepository.setSession(token) }
              _isUserLoggedIn.value = it != null
          })
      }

@@ -18,7 +18,7 @@ interface ApiService {
     @GET("users/{userId}")
     suspend fun getUserDetails(@Path("userId") userId: String): UserResponse
 
-    @GET("users/{userId}/avatar")
+    @POST("users/{userId}/avatar")
     suspend fun uploadUserAvatar(@Path("userId") userId: String, @Body avatarRequest: AvatarRequest): AvatarResponse
 
 

@@ -15,10 +15,14 @@ class UserRepository @Inject constructor(
     private val sessionInterceptor: SessionInterceptor
 ): BaseRepository() {
 
+    fun setSession(token: String) {
+        sessionInterceptor.setSessionToken(token)
+    }
+
     suspend fun userLogin(username: String, password: String) = safeApiCall {
         val response = remoteDataSrc.login(LoginRequest(username, password))
         if (response.token.isNotEmpty()) {
-            sessionInterceptor.setSessionToken(response.token)
+            setSession(response.token)
             prefs.setAccessToken(response.token)
             prefs.setUserId(response.userid)
             prefs.setUserEmail(username)

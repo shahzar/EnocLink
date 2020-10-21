@@ -27,8 +27,15 @@ abstract class BaseActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutRes())
         injectDependency()
+        setupToolbar()
         initViews()
         setupObservers()
+    }
+
+    private fun setupToolbar() {
+        findViewById<Toolbar>(R.id.toolbar)?.let { toolbar ->
+            setSupportActionBar(toolbar)
+        }
     }
 
     open fun setupObservers() {

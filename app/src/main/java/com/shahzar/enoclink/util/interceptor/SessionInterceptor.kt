@@ -19,12 +19,10 @@ class SessionInterceptor @Inject constructor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request: Request = chain.request()
         val requestBuilder: Request.Builder = request.newBuilder()
-        if (request.header("Cookie") == null) {
+        if (request.header("Authorization") == null) {
             // needs credentials
-            if (sessionToken == null) {
-                // throw RuntimeException("Session token should be defined for auth apis")
-            } else {
-                requestBuilder.addHeader("Cookie", sessionToken)
+            sessionToken?.let {
+                requestBuilder.addHeader("Authorization", "Bearer $it")
             }
         }
         return chain.proceed(requestBuilder.build())
